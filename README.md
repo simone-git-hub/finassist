@@ -30,14 +30,17 @@ pip install -e ".[dev]"
 cp .env.example .env
 
 # 3. Ingest public FAQ corpus (fetch → parse → chunk)
-finassist-ingest
-# or smoke test first 2 pages:
-finassist-ingest --limit 2
+finassist-ingest --manifest data/raw/manifest.offline.csv
 
-# 4. Build vector index (Phase 2 — not implemented yet)
-finassist-build-index
+# 4. Build vector index
+finassist-build-index --config configs/offline.yaml
+# Production-quality embeddings (downloads model on first run):
+# finassist-build-index
 
-# 5. Run API (Phase 3 — not implemented yet)
+# 5. Test retrieval
+finassist-search --config configs/offline.yaml "How do I freeze my card?"
+
+# 6. Run API (Phase 3 — not implemented yet)
 uvicorn finassist.api.app:app --reload
 ```
 

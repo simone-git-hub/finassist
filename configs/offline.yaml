@@ -16,10 +16,10 @@ index:
   chunks_path: data/raw/processed/chunks.jsonl
   collection_name: finassist_chunks
   batch_size: 32
-  embedding_backend: sentence_transformers
+  embedding_backend: tfidf
 
 llm:
-  provider: ollama  # ollama | openai
+  provider: ollama
   model: llama3.2:3b
   max_tokens: 256
   temperature: 0.1

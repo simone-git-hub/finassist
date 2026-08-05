@@ -21,6 +21,7 @@ dependencies = [
     "numpy>=2.1.0",
     "pandas>=2.2.0",
     "python-dotenv>=1.0.0",
+    "scikit-learn>=1.5.0",
     "streamlit>=1.40.0",
 ]
 
@@ -38,6 +39,7 @@ eval = [
 [project.scripts]
 finassist-ingest = "finassist.cli.ingest:main"
 finassist-build-index = "finassist.cli.build_index:main"
+finassist-search = "finassist.cli.search:main"
 
 [build-system]
 requires = ["setuptools>=75.0.0", "wheel"]

@@ -11,3 +11,4 @@ def test_app_config_loads_defaults() -> None:
     assert config.chunking.size == 512
     assert config.retrieval.top_k == 5
     assert config.ingest.manifest_path == "data/raw/manifest.csv"
+    assert config.index.collection_name == "finassist_chunks"

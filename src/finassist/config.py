@@ -25,6 +25,13 @@ class RetrievalConfig(BaseModel):
     embedding_model: str = "BAAI/bge-small-en-v1.5"
 
 
+class IndexConfig(BaseModel):
+    chunks_path: str = "data/raw/processed/chunks.jsonl"
+    collection_name: str = "finassist_chunks"
+    batch_size: int = 32
+    embedding_backend: str = "sentence_transformers"
+
+
 class LLMConfig(BaseModel):
     provider: str = "ollama"
     model: str = "llama3.2:3b"
@@ -53,6 +60,7 @@ class IngestConfig(BaseModel):
 class AppConfig(BaseModel):
     chunking: ChunkingConfig = Field(default_factory=ChunkingConfig)
     retrieval: RetrievalConfig = Field(default_factory=RetrievalConfig)
+    index: IndexConfig = Field(default_factory=IndexConfig)
     llm: LLMConfig = Field(default_factory=LLMConfig)
     guardrails: GuardrailsConfig = Field(default_factory=GuardrailsConfig)
     eval: EvalConfig = Field(default_factory=EvalConfig)
@@ -91,3 +99,17 @@ def get_app_config(config_path: str | None = None) -> AppConfig:
 @lru_cache
 def get_settings() -> Settings:
     return Settings()
+
+
+def resolve_embedding_model(config: AppConfig) -> str:
+    settings = get_settings()
+    return settings.embedding_model or config.retrieval.embedding_model
+
+
+def resolve_chroma_dir(config: AppConfig, root: Path | None = None) -> Path:
+    settings = get_settings()
+    base = root or project_root()
+    path = Path(settings.chroma_persist_dir)
+    if not path.is_absolute():
+        path = base / path
+    return path

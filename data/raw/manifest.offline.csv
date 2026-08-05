@@ -1,2 +1,3 @@
 doc_id,url,source,title,category,license_note,local_path
-example-freeze-card,https://example.com/help/freeze-card,ExampleBank,How to freeze your card,cards,Local fixture for offline development,tests/fixtures/sample_faq.html
+example-freeze-card,https://example.com/help/freeze-card,ExampleBank,How to freeze your card,cards,Local fixture,tests/fixtures/sample_faq.html
+example-dispute,https://example.com/help/dispute,ExampleBank,How to dispute a transaction,cards,Local fixture,tests/fixtures/sample_dispute.html

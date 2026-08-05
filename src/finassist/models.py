@@ -38,3 +38,14 @@ class TextChunk(BaseModel):
     text: str
     char_start: int
     char_end: int
+
+
+class ScoredChunk(BaseModel):
+    chunk_id: str
+    doc_id: str
+    source_url: str
+    title: str
+    category: str
+    chunk_index: int
+    text: str
+    score: float
