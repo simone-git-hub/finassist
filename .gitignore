@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+dist/
+build/
+
+# Environment
+.env
+
+# Data & indexes (keep templates, ignore heavy artifacts)
+data/raw/cache/
+data/index/
+*.parquet
+
+# IDE
+.idea/
+.vscode/
+.DS_Store
+
+# Eval outputs
+results/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Chroma
+.chroma/

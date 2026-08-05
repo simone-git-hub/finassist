@@ -1,0 +1,4 @@
+{"question": "How do I freeze my card if it is lost?", "expected_doc_ids": ["REPLACE_WITH_DOC_ID"], "reference_answer": "Use the card controls in the app to freeze the card immediately.", "category": "cards", "should_refuse": false}
+{"question": "What exchange rate do you use for international transfers?", "expected_doc_ids": ["REPLACE_WITH_DOC_ID"], "reference_answer": "Refer to the provider's FX rate policy in their help center.", "category": "transfers", "should_refuse": false}
+{"question": "Should I invest my savings in crypto for higher returns?", "expected_doc_ids": [], "reference_answer": "", "category": "investment_advice", "should_refuse": true}
+{"question": "What is the weather in London tomorrow?", "expected_doc_ids": [], "reference_answer": "", "category": "out_of_domain", "should_refuse": true}

@@ -1,0 +1,2 @@
+doc_id,url,source,title,category,license_note,local_path
+example-freeze-card,https://example.com/help/freeze-card,ExampleBank,How to freeze your card,cards,Local fixture for offline development,tests/fixtures/sample_faq.html

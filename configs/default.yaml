@@ -1,0 +1,34 @@
+project:
+  name: finassist-rag-copilot
+  version: 0.1.0
+
+retrieval:
+  top_k: 5
+  min_score: 0.55
+  embedding_model: "BAAI/bge-small-en-v1.5"
+
+chunking:
+  size: 512
+  overlap: 64
+  min_chunk_chars: 100
+
+llm:
+  provider: ollama  # ollama | openai
+  model: llama3.2:3b
+  max_tokens: 256
+  temperature: 0.1
+
+guardrails:
+  refuse_out_of_domain: true
+  max_answer_words: 120
+
+eval:
+  gold_path: data/eval/qa_gold.jsonl
+  k_values: [3, 5]
+
+ingest:
+  manifest_path: data/raw/manifest.csv
+  cache_dir: data/raw/cache
+  processed_dir: data/raw/processed
+  request_timeout_s: 20.0
+  user_agent: "FinAssistBot/0.1 (+portfolio project; educational use)"
