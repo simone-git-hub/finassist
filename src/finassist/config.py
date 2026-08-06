@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 from functools import lru_cache
 from pathlib import Path
 from typing import Any
@@ -91,7 +92,15 @@ def load_yaml_config(config_path: Path | None = None) -> dict[str, Any]:
 
 @lru_cache
 def get_app_config(config_path: str | None = None) -> AppConfig:
-    path = Path(config_path) if config_path else project_root() / "configs" / "default.yaml"
+    if config_path is None:
+        config_path = os.environ.get("FINASSIST_CONFIG_PATH")
+    path = (
+        Path(config_path)
+        if config_path
+        else project_root() / "configs" / "default.yaml"
+    )
+    if not path.is_absolute():
+        path = project_root() / path
     data = load_yaml_config(path)
     return AppConfig.model_validate(data)
 
