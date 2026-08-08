@@ -40,6 +40,10 @@ eval = [
 finassist-ingest = "finassist.cli.ingest:main"
 finassist-build-index = "finassist.cli.build_index:main"
 finassist-search = "finassist.cli.search:main"
+finassist-ask = "finassist.cli.ask:main"
+finassist-api = "finassist.cli.serve:main"
+finassist-eval = "finassist.cli.eval:main"
+finassist-demo = "finassist.cli.demo:main"
 
 [build-system]
 requires = ["setuptools>=75.0.0", "wheel"]

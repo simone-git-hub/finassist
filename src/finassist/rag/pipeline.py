@@ -64,6 +64,28 @@ class RAGPipeline:
             latency_ms=latency_ms,
         )
 
+    def ask_without_rag(self, question: str) -> RAGResponse:
+        """Baseline for ablation: LLM answer with no retrieved context."""
+        started = time.perf_counter()
+
+        question_check = check_question_guardrails(question, self.config)
+        if question_check.refuse and question_check.reason is not None:
+            return self._refused(question_check.reason, started)
+
+        answer = self.llm.generate(
+            question=question,
+            context_chunks=[],
+            max_words=self.config.guardrails.max_answer_words,
+        )
+        latency_ms = int((time.perf_counter() - started) * 1000)
+        return RAGResponse(
+            answer=answer.strip(),
+            sources=[],
+            refused=False,
+            refusal_reason=None,
+            latency_ms=latency_ms,
+        )
+
     @staticmethod
     def _build_sources(chunks: list[ScoredChunk]) -> list[SourceCitation]:
         sources: list[SourceCitation] = []
@@ -85,10 +107,11 @@ class RAGPipeline:
 def build_pipeline(
     config: AppConfig | None = None,
     *,
+    root: Path | None = None,
     retriever: Retriever | None = None,
     llm: LLMBackend | None = None,
 ) -> RAGPipeline:
     cfg = config or get_app_config()
-    active_retriever = retriever or create_retriever(cfg)
+    active_retriever = retriever or create_retriever(cfg, root=root)
     active_llm = llm or create_llm(cfg)
     return RAGPipeline(cfg, active_retriever, active_llm)

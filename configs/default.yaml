@@ -19,7 +19,7 @@ index:
   embedding_backend: sentence_transformers
 
 llm:
-  provider: ollama  # ollama | openai
+  provider: ollama  # ollama | openai | extractive | mock
   model: llama3.2:3b
   max_tokens: 256
   temperature: 0.1
@@ -29,7 +29,7 @@ guardrails:
   max_answer_words: 120
 
 eval:
-  gold_path: data/eval/qa_gold.jsonl
+  gold_path: data/eval/qa_gold_offline.jsonl
   k_values: [3, 5]
 
 ingest:

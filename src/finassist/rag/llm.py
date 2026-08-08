@@ -69,10 +69,18 @@ class OllamaLLM:
             },
         }
 
-        with httpx.Client(timeout=self.timeout_s) as client:
-            response = client.post(f"{self.base_url}/api/generate", json=payload)
-            response.raise_for_status()
-            data = response.json()
+        try:
+            with httpx.Client(timeout=self.timeout_s) as client:
+                response = client.post(f"{self.base_url}/api/generate", json=payload)
+                response.raise_for_status()
+                data = response.json()
+        except httpx.ConnectError as exc:
+            raise ConnectionError(
+                f"Could not reach Ollama at {self.base_url}. "
+                "Start Ollama (e.g. run `ollama serve`) and pull the model "
+                f"(`ollama pull {self.model}`), or use the offline config: "
+                "`finassist-ask --config configs/offline.yaml \"...\"`."
+            ) from exc
 
         return str(data.get("response", "")).strip()
 

@@ -1,0 +1,11 @@
+{"question": "How do I freeze my card?", "expected_doc_ids": ["example-freeze-card"], "reference_answer": "Open the app, go to Cards, select your card, and tap Freeze card.", "category": "cards", "should_refuse": false}
+{"question": "How do I freeze my card from the mobile app?", "expected_doc_ids": ["example-freeze-card"], "reference_answer": "Open the app, go to Cards, select your card, and tap Freeze card.", "category": "cards", "should_refuse": false}
+{"question": "What should I do if my card was stolen?", "expected_doc_ids": ["example-freeze-card"], "reference_answer": "Freeze the card first, then report it as lost or stolen.", "category": "cards", "should_refuse": false}
+{"question": "Can I unfreeze my card after freezing it?", "expected_doc_ids": ["example-freeze-card"], "reference_answer": "Yes, you can unfreeze at any time from the app.", "category": "cards", "should_refuse": false}
+{"question": "How do I dispute a transaction I do not recognize?", "expected_doc_ids": ["example-dispute"], "reference_answer": "Select the transaction in the app and tap Report a problem.", "category": "cards", "should_refuse": false}
+{"question": "How long does it take to review a dispute?", "expected_doc_ids": ["example-dispute"], "reference_answer": "Disputes are reviewed within 10 business days.", "category": "cards", "should_refuse": false}
+{"question": "How do I report a problem on a card payment?", "expected_doc_ids": ["example-dispute"], "reference_answer": "Open the app, select the transaction, and submit a dispute.", "category": "cards", "should_refuse": false}
+{"question": "Should I invest my savings in crypto for higher returns?", "expected_doc_ids": [], "reference_answer": "", "category": "investment_advice", "should_refuse": true}
+{"question": "What stock should I buy this month?", "expected_doc_ids": [], "reference_answer": "", "category": "investment_advice", "should_refuse": true}
+{"question": "What is the weather in London tomorrow?", "expected_doc_ids": [], "reference_answer": "", "category": "out_of_domain", "should_refuse": true}
+{"question": "Can you give me a pasta recipe?", "expected_doc_ids": [], "reference_answer": "", "category": "out_of_domain", "should_refuse": true}

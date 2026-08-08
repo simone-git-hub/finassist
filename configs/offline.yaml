@@ -4,7 +4,7 @@ project:
 
 retrieval:
   top_k: 5
-  min_score: 0.55
+  min_score: 0.45
   embedding_model: "BAAI/bge-small-en-v1.5"
 
 chunking:
@@ -19,7 +19,7 @@ index:
   embedding_backend: tfidf
 
 llm:
-  provider: ollama
+  provider: extractive  # extractive | ollama | openai | mock
   model: llama3.2:3b
   max_tokens: 256
   temperature: 0.1
@@ -29,7 +29,7 @@ guardrails:
   max_answer_words: 120
 
 eval:
-  gold_path: data/eval/qa_gold.jsonl
+  gold_path: data/eval/qa_gold_offline.jsonl
   k_values: [3, 5]
 
 ingest:

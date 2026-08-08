@@ -1,6 +1,6 @@
 {
-  "num_documents": 2,
-  "num_chunks": 2,
+  "num_documents": 10,
+  "num_chunks": 56,
   "documents_path": "project/finassist/data/raw/processed/documents.jsonl",
   "chunks_path": "project/finassist/data/raw/processed/chunks.jsonl"
 }

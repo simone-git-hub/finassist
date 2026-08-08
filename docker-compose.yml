@@ -1,0 +1,24 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      FINASSIST_CONFIG_PATH: /app/configs/offline.yaml
+    healthcheck:
+      test: ["CMD", "python", "-c", "import httpx; httpx.get('http://127.0.0.1:8000/health').raise_for_status()"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  demo:
+    build: .
+    command: streamlit run src/finassist/demo/app.py --server.address 0.0.0.0 --server.port 8501
+    ports:
+      - "8501:8501"
+    environment:
+      FINASSIST_CONFIG_PATH: /app/configs/offline.yaml
+      FINASSIST_API_URL: http://api:8000
+    depends_on:
+      api:
+        condition: service_healthy

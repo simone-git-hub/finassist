@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import csv
 import hashlib
+import warnings
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -60,9 +61,19 @@ def fetch_url(
         return cache_file.read_text(encoding="utf-8"), fetched_at, True
 
     headers = {"User-Agent": user_agent}
-    with httpx.Client(timeout=timeout_s, follow_redirects=True, headers=headers) as client:
-        response = client.get(url)
-        response.raise_for_status()
+    try:
+        with httpx.Client(timeout=timeout_s, follow_redirects=True, headers=headers) as client:
+            response = client.get(url)
+            response.raise_for_status()
+    except httpx.HTTPError as exc:
+        if cache_file.exists():
+            warnings.warn(
+                f"Fetch failed for {url} ({exc}); using cached HTML.",
+                stacklevel=2,
+            )
+            fetched_at = datetime.fromtimestamp(cache_file.stat().st_mtime, tz=UTC)
+            return cache_file.read_text(encoding="utf-8"), fetched_at, True
+        raise
 
     html = response.text
     cache_file.write_text(html, encoding="utf-8")
