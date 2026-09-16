@@ -133,8 +133,8 @@ def run_ingest_pipeline(
     summary = {
         "num_documents": len(documents),
         "num_chunks": len(chunks),
-        "documents_path": str(documents_path),
-        "chunks_path": str(chunks_path),
+        "documents_path": str(documents_path.relative_to(base)),
+        "chunks_path": str(chunks_path.relative_to(base)),
     }
     summary_path = processed_dir / "ingest_summary.json"
     summary_path.write_text(json.dumps(summary, indent=2), encoding="utf-8")

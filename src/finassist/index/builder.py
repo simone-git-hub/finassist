@@ -87,7 +87,9 @@ def build_index_from_chunks(
 ) -> IndexBuildResult:
     base = root or project_root()
     cfg = _resolve_config(config, base)
-    embedding_model = resolve_embedding_model(cfg)
+    embedding_model = (
+        "tfidf" if cfg.index.embedding_backend == "tfidf" else resolve_embedding_model(cfg)
+    )
     persist_dir = resolve_chroma_dir(cfg, base)
 
     store = ChromaStore(

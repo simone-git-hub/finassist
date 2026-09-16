@@ -37,7 +37,7 @@ Run: `finassist-eval --config configs/offline.yaml`
 ## Quickstart
 
 ```bash
-cd project/finassist
+cd finassist
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
 cp .env.example .env
@@ -90,10 +90,8 @@ For production-quality generation, set `llm.provider: ollama` or `openai` in `co
 
 | Doc | Description |
 |-----|-------------|
-| [PLAN.md](./PLAN.md) | Full project plan and CV framing |
 | [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) | System design |
 | [docs/DECISIONS.md](./docs/DECISIONS.md) | Design tradeoffs |
-| [docs/MILESTONES.md](./docs/MILESTONES.md) | Build checklist |
 
 ## Tech stack
 
