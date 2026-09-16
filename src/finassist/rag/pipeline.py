@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import time
+from pathlib import Path
 
 from finassist.config import AppConfig, get_app_config
 from finassist.index.retriever import Retriever, create_retriever

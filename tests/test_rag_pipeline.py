@@ -1,4 +1,3 @@
-from finassist.config import AppConfig
 from finassist.index.builder import build_index_from_chunks, load_chunks_jsonl
 from finassist.rag.llm import MockLLM
 from finassist.rag.pipeline import RAGPipeline

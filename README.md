@@ -1,10 +1,12 @@
 # FinAssist RAG Copilot
 
+![CI](https://github.com/simone-git-hub/finassist/actions/workflows/ci.yml/badge.svg)
+
 A retrieval-augmented LLM copilot for finance support-style questions. Built as a portfolio project demonstrating **RAG systems engineering**: ingestion, vector retrieval, guardrails, evaluation, FastAPI deployment, and a Streamlit demo.
 
 ## Motivation
 
-Deep learning experience from molecular generative modeling (transformers, diffusion) transfers directly to modern LLM systems. This project applies that discipline to **text-based copilots**: grounded retrieval, refusal when evidence is missing, and measurable quality.
+Deep learning experience from molecular generative modeling (autoregressive transformers, LLM fine-tuning) transfers directly to modern LLM systems. This project applies that discipline to **text-based copilots**: grounded retrieval, refusal when evidence is missing, and measurable quality.
 
 ## Architecture
 
@@ -32,7 +34,7 @@ Run: `finassist-eval --config configs/offline.yaml`
 
 **Ablation (RAG − No-RAG):** retrieval grounding improves citation-backed answers; the no-RAG baseline often returns ungrounded text without refusing (see [docs/DECISIONS.md](./docs/DECISIONS.md)).
 
-**Limitations:** Metrics are on a 2-document offline demo corpus with TF-IDF embeddings and an extractive “LLM”. Semantic embeddings + Ollama/OpenAI improve fluency; expand `data/eval/qa_gold_offline.jsonl` when adding the full public FAQ manifest.
+**Limitations:** Metrics are on a 2-document offline demo corpus with TF-IDF embeddings and an extractive “LLM”. At this corpus size the retrieval metrics are degenerate: with 2 chunks indexed and `top_k: 5`, Recall@5 is trivially 1.00 — the harness is wired up and reproducible, not benchmarked. Semantic embeddings + Ollama/OpenAI improve fluency; expand `data/eval/qa_gold_offline.jsonl` when adding the full public FAQ manifest.
 
 ## Quickstart
 

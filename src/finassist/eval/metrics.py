@@ -6,7 +6,6 @@ from dataclasses import dataclass, field
 from finassist.eval.dataset import GoldExample
 from finassist.index.retriever import Retriever
 from finassist.rag.pipeline import RAGPipeline
-from finassist.rag.schemas import RAGResponse
 
 
 @dataclass

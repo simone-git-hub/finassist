@@ -7,7 +7,6 @@ import httpx
 
 from finassist.config import AppConfig, get_settings
 from finassist.rag.prompts import build_rag_prompt, format_context_blocks
-from finassist.rag.schemas import RefusalReason
 
 
 class LLMBackend(Protocol):
