@@ -53,4 +53,4 @@ def health() -> HealthResponse:
 @app.post("/ask", response_model=AskResponse)
 def ask(request: AskRequest, pipeline: RAGPipeline = Depends(get_pipeline)) -> AskResponse:
     result = pipeline.ask(request.question, top_k=request.top_k)
-    return AskResponse.model_validate(result.model
+    return AskResponse.model_validate(result.model)
