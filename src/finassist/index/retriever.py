@@ -95,4 +95,4 @@ def create_retriever(
         )
 
     active_embedder = embedder or load_embedder_from_index(cfg, root=base)
-    return Retriever(store, active_embedder, default_to
+    return Retriever(store, active_embedder, default_top_k=cfg.retrieval.top_k)
