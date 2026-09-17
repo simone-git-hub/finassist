@@ -1,9 +1,9 @@
 from finassist.index.builder import build_index_from_chunks, load_chunks_jsonl
+from finassist.index.retriever import create_retriever
+from finassist.ingest.pipeline import run_ingest_pipeline
 from finassist.rag.llm import MockLLM
 from finassist.rag.pipeline import RAGPipeline
 from finassist.rag.schemas import RefusalReason
-from finassist.index.retriever import create_retriever
-from finassist.ingest.pipeline import run_ingest_pipeline
 
 
 def test_rag_pipeline_answers_freeze_card_question(rag_project_tree) -> None:

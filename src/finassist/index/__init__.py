@@ -1,7 +1,7 @@
 from finassist.index.builder import (
     IndexBuildResult,
-    build_index_from_config,
     build_index_from_chunks,
+    build_index_from_config,
     load_chunks_jsonl,
     load_embedder_from_index,
 )

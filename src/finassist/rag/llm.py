@@ -1,12 +1,11 @@
 from __future__ import annotations
 
-import re
 from typing import Protocol
 
 import httpx
 
 from finassist.config import AppConfig, get_settings
-from finassist.rag.prompts import build_rag_prompt, format_context_blocks
+from finassist.rag.prompts import build_rag_prompt
 
 
 class LLMBackend(Protocol):

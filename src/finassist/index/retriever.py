@@ -2,7 +2,13 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from finassist.config import AppConfig, get_app_config, load_yaml_config, project_root, resolve_chroma_dir
+from finassist.config import (
+    AppConfig,
+    get_app_config,
+    load_yaml_config,
+    project_root,
+    resolve_chroma_dir,
+)
 from finassist.index.builder import load_embedder_from_index
 from finassist.index.embedder import EmbeddingBackend
 from finassist.index.store import ChromaStore
@@ -89,4 +95,4 @@ def create_retriever(
         )
 
     active_embedder = embedder or load_embedder_from_index(cfg, root=base)
-    return Retriever(store, active_embedder, default_top_k=cfg.retrieval.top_k)
+    return Retriever(store, active_embedder, default_to

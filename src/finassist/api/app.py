@@ -1,7 +1,7 @@
 from __future__ import annotations
 
+from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
-from typing import AsyncIterator
 
 from fastapi import Depends, FastAPI, HTTPException
 
@@ -53,4 +53,4 @@ def health() -> HealthResponse:
 @app.post("/ask", response_model=AskResponse)
 def ask(request: AskRequest, pipeline: RAGPipeline = Depends(get_pipeline)) -> AskResponse:
     result = pipeline.ask(request.question, top_k=request.top_k)
-    return AskResponse.model_validate(result.model_dump())
+    return AskResponse.model_validate(result.model
